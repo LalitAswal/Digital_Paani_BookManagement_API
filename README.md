@@ -45,7 +45,7 @@ Runs the app in the development mode.\
 Open [http://localhost:4000](http://localhost:4000) to view it in your browser.
 
 Postman collection - https://github.com/LalitAswal/Digital_Paani_BookManagement_API/blob/qa/book%20managment.postman_collection.json
-documentation is done inside postman with response output 
+Documentation avaliable - https://github.com/LalitAswal/Digital_Paani_BookManagement_API/blob/qa/Documentation.md
 
 ### Built With
 
