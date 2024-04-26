@@ -6,9 +6,9 @@ This is a backend application of Book management service, where user can add, up
 
 ### Feature
 
-- User authentication and authorization using JWT
-- User Registration
-- Login
+- User authentication and authorization using JWT/JOI module for validation.
+- User Registration.
+- Login.
 - Add books with title, author name , publish year
 - Edit any of the above data of the books which are already been added
 - Get all the books available in Data base
@@ -52,3 +52,4 @@ documentation is done inside postman with response output
 - Mongodb  v3.2
 - Express.js v^4.19.2
 - Node.js  v16.17.0
+
