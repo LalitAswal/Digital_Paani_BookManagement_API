@@ -12,6 +12,8 @@ This is a backend application of Book management service, where user can add, up
 - Add books with title, author name , publish year
 - Edit any of the above data of the books which are already been added
 - Get all the books available in Data base
+- Delete Book (soft Delete)
+- filter book using Author name
 
 ---
 
@@ -42,8 +44,11 @@ This is a backend application of Book management service, where user can add, up
 Runs the app in the development mode.\
 Open [http://localhost:4000](http://localhost:4000) to view it in your browser.
 
+Postman collection - https://github.com/LalitAswal/Digital_Paani_BookManagement_API/blob/qa/book%20managment.postman_collection.json
+documentation is done inside postman with response output 
+
 ### Built With
 
-- Mongodb
-- Express.js
-- Node.js
+- Mongodb  v3.2
+- Express.js v^4.19.2
+- Node.js  v16.17.0
