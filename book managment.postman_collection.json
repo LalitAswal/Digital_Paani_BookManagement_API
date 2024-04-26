@@ -1,0 +1,954 @@
+{
+	"info": {
+		"_postman_id": "d8e6706b-e683-48bb-8d9c-096dd490ca0f",
+		"name": "book managment",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20327354"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"lalit\",\r\n    \"lastName\": \"Aswal\",\r\n    \"email\": \"lalit.aswal1@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000"
+				},
+				"description": "**UserRegistration API**\n\nuser has to register first inorder to add, delete, update book"
+			},
+			"response": [
+				{
+					"name": "Registration",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"lalit\",\r\n    \"lastName\": \"Aswal\",\r\n    \"email\": \"lalit.aswal@gmail.com\",\r\n    \"password\": 123456789\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"22-KN8hwUZi4URapceCwFjArsrZGWc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 04:01:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully updated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"lalit.aswal@gmail.com\",\n    \"password\": 1234567sss89\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "**Login API**\n\nshould be run after succesfull registration\n\nLogin request useremail and password"
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"lalit.aswal@gmail.com\",\n    \"password\": 123456789\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"da-qoWd4ZHXVFVUUrS5GTMGOVgU3YM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 04:05:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully logged In\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY\"\n}"
+				}
+			]
+		},
+		{
+			"name": "add book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"title\":\"The Red Umbrella\",\n        \"author\":\"John Doe\",\n        \"publicationYear\":2018\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/addBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"addBook"
+					]
+				},
+				"description": "Add Book API\n\nuser has to provide all the field like title, authorname and publishedYear\n\nuser token require in order to access this api"
+			},
+			"response": [
+				{
+					"name": "add books",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\":\"testomg\",\n        \"author\":\"author\",\n        \"publicationYear\":2017\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/addBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"addBook"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25-kDKWnYGQ8Cj+SSjJl+QcGgiqXOk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 04:59:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Book added successfully\"\n}"
+				},
+				{
+					"name": "add books",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\":\"harry potter\",\n        \"author\":\"J. K. Rowling\",\n        \"publicationYear\":1997\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/addBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"addBook"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"23-MREBuFlgfE4r80Qb4rASa6R1Rn4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 07:32:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Book is already Exist\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\": \"662b34bd27b27c3943b45047\",\r\n    \"updateData\":{\r\n    \"title\": \"reach the sky\",\r\n    \"author\": \"skybook\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/updateBookDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"updateBookDetails"
+					]
+				},
+				"description": "**UpdateBOoks Details**  \nuser can update books details\n\nchecks has been applied, weather sending same data or not and undefined or null data"
+			},
+			"response": [
+				{
+					"name": "sending Same data",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"662b34bd27b27c3943b45047\",\r\n    \"title\": \"reach the sky\",\r\n    \"author\": \"skybook\",\r\n    \"publicationYear\": 2017\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/updateBookDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"updateBookDetails"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-wlAYtYMniOKpfMf8z4XQYdrMhrU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 05:25:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Sending Same Data\"\n}"
+				},
+				{
+					"name": "200 response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"662b34bd27b27c3943b45047\",\r\n    \"title\": \"reach the sky1\",\r\n    \"author\": \"skybook\",\r\n    \"publicationYear\": 2018\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/updateBookDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"updateBookDetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "155"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9b-vXKXEZi7cqr77Ipw4eHIMQr8vDc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 05:26:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully Updated\",\n    \"response\": {\n        \"_id\": \"662b34bd27b27c3943b45047\",\n        \"title\": \"reach the sky1\",\n        \"author\": \"skybook\",\n        \"publicationYear\": 2018,\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "update Book",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"662b34bd27b27c3943b4504\",\r\n    \"title\": \"reach the sky1\",\r\n    \"author\": \"skybook\",\r\n    \"publicationYear\": 2018\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/updateBookDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"updateBookDetails"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "322"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"142-PJFS7w5xB4LuVYOr8eUftobZRD4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 05:26:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Error updating\",\n    \"error\": {\n        \"stringValue\": \"\\\"662b34bd27b27c3943b4504\\\"\",\n        \"valueType\": \"string\",\n        \"kind\": \"ObjectId\",\n        \"value\": \"662b34bd27b27c3943b4504\",\n        \"path\": \"_id\",\n        \"reason\": {},\n        \"name\": \"CastError\",\n        \"message\": \"Cast to ObjectId failed for value \\\"662b34bd27b27c3943b4504\\\" (type string) at path \\\"_id\\\" for model \\\"Book\\\"\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "All Books",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/allBooks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"allBooks"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "All Books Api\n\nthis api allow to get all the based on author name"
+			},
+			"response": [
+				{
+					"name": "All Books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/allBooks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"allBooks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "340"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"154-+v8y751TREzpCsQEj0KSt9c60Os\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 06:02:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": [\n        {\n            \"_id\": \"662b34bd27b27c3943b45047\",\n            \"title\": \"reach the sky1\",\n            \"author\": \"skybook\",\n            \"publicationYear\": 2018,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"662b43301c8525a7b379dd1b\",\n            \"title\": \"testomg\",\n            \"author\": \"author\",\n            \"publicationYear\": 2017,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"662b43671c8525a7b379dd1d\",\n            \"title\": \"harry potter\",\n            \"author\": \"J. K. Rowling\",\n            \"publicationYear\": 1997,\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Filter books",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "title",
+						"value": "reach the sky1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/filterBooksByAuthor?author=skybook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"filterBooksByAuthor"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "skybook"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "**Filter Books by Author**\n\nuser able to find books based on author name"
+			},
+			"response": [
+				{
+					"name": "filterBooksByAuthor",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "title",
+								"value": "reach the sky1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/filterBooksByAuthor?author=skybook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"filterBooksByAuthor"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "skybook"
+								},
+								{
+									"key": "Authorization",
+									"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGl0LmFzd2FsQGdtYWlsLmNvbSIsImlhdCI6MTcxNDEwNDMyMSwiZXhwIjoxNzE0MTkwNzIxfQ.g9MSjS9vrCkOf57y1DO42vd96fkXhRGtsD0GkqQoMnY",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "124"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7c-tFVVRQfJBEGyzfyNnIXTPzPaK78\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Apr 2024 06:22:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": [\n        {\n            \"_id\": \"662b34bd27b27c3943b45047\",\n            \"title\": \"reach the sky1\",\n            \"author\": \"skybook\",\n            \"publicationYear\": 2018,\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
